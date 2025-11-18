@@ -62,5 +62,5 @@ public abstract class Lutador {
 
     public abstract boolean estarVivo();
 
-    public abstract int calcularDano
+    public abstract double calcularDano();
 }

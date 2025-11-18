@@ -1,6 +1,7 @@
 //Lutador Pesado
 
 public class Orc extends Lutador {
+
     public Orc (String nome, double vida, int energia, int forca) {
         super(nome,vida,energia,forca);
         this.setVida(200);
@@ -9,4 +10,8 @@ public class Orc extends Lutador {
         this.setMultiplicacoForca(1.5);
     }
 
+    @Override
+    public double calcularDano() {
+        return super.getForca() * super.getMultiplicacoForca();
+    }
 }
