@@ -2,16 +2,52 @@
 
 public class Orc extends Lutador {
 
-    public Orc (String nome, double vida, int energia, int forca) {
-        super(nome,vida,energia,forca);
-        this.setVida(200);
-        this.setEnergia(50);
-        this.setForca(25);
-        this.setMultiplicacoForca(1.5);
+    public Orc (String nome) {
+        super(nome);
+        this.vida = 300;
+        this.magicka = 25;
+        this.forca = 25;
+        this.multiplicacaoForca = 1.5;
+        this.multiplicacaoEspecial = 0.5;
     }
 
     @Override
     public double calcularDano() {
-        return super.getForca() * super.getMultiplicacoForca();
+        return this.forca * this.multiplicacaoForca;
+    }
+
+    @Override
+    public double calcularMagia() {
+        return this.magicka * this.multiplicacaoEspecial;
+    }
+
+    @Override
+    public void atacar(Lutador op) {
+        op.vida -= calcularDano();
+    }
+
+    @Override
+    public void magia(Lutador op) {
+        op.vida -= calcularMagia();
+    }
+
+    @Override
+    public void defender() {
+        this.magicka += 5;
+    }
+
+    @Override
+    public void mostrarStatus() {
+        System.out.println("Nome: " + getNome());
+        System.out.println("Vida: " + this.vida);
+        System.out.println("Magicka: " + this.magicka);
+    }
+
+    @Override
+    public boolean estarVivo() {
+        if (this.vida > 0) {
+            return true;
+        }
+            return false;
     }
 }
