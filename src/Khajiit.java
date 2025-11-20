@@ -45,10 +45,11 @@ public class Khajiit extends Lutador {
 
     @Override
     public boolean estarVivo() {
-        if (this.vida > 0) {
+        if (this.vida <= 0.0) {
+            return false;
+        } else {
             return true;
         }
-        return false;
     }
 }
 
